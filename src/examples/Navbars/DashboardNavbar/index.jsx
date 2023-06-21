@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 /**
 =========================================================
 * Material Dashboard 2 React - v2.2.0
@@ -31,7 +33,9 @@ import Icon from "@mui/material/Icon";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDInput from "components/MDInput";
+import { signOut } from "firebase/auth";
 
+import { firebaseAuthentication } from "firebaseConfig";
 // Material Dashboard 2 React example components
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
@@ -104,9 +108,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
       onClose={handleCloseMenu}
       sx={{ mt: 2 }}
     >
-      <NotificationItem icon={<Icon>email</Icon>} title="Check new messages" />
+      {/* <NotificationItem icon={<Icon>email</Icon>} title="Check new messages" />
       <NotificationItem icon={<Icon>podcasts</Icon>} title="Manage Podcast sessions" />
-      <NotificationItem icon={<Icon>shopping_cart</Icon>} title="Payment successfully completed" />
+      <NotificationItem icon={<Icon>shopping_cart</Icon>} title="Payment successfully completed" /> */}
     </Menu>
   );
 
@@ -123,6 +127,15 @@ function DashboardNavbar({ absolute, light, isMini }) {
     },
   });
 
+  const handleLogout = () => {
+    signOut(firebaseAuthentication)
+      .then(() => {
+        window.location.href = "/authentication/sign-in";
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  };
   return (
     <AppBar
       position={absolute ? "absolute" : navbarType}
@@ -139,12 +152,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
               <MDInput label="Search here" />
             </MDBox>
             <MDBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/basic">
-                <IconButton sx={navbarIconButton} size="small" disableRipple>
+                <IconButton sx={navbarIconButton} size="small" disableRipple onClick={handleLogout}>
                   <Icon sx={iconsStyle}>account_circle</Icon>
                 </IconButton>
-              </Link>
-              <IconButton
+              {/* <IconButton
                 size="small"
                 disableRipple
                 color="inherit"
@@ -154,7 +165,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <Icon sx={iconsStyle} fontSize="medium">
                   {miniSidenav ? "menu_open" : "menu"}
                 </Icon>
-              </IconButton>
+              </IconButton> */}
               {/* <IconButton
                 size="small"
                 disableRipple

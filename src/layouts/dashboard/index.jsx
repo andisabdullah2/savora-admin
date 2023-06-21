@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 /**
 =========================================================
 * Material Dashboard 2 React - v2.2.0
@@ -34,10 +36,24 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+import { firebaseAuthentication } from "firebaseConfig";
+import { useEffect } from "react";
 
-function Dashboard() {
+function Dashboard(){
   const { sales, tasks } = reportsLineChartData;
 
+  useEffect(() => {
+    const checkAuthentication = () => {
+      
+      firebaseAuthentication.onAuthStateChanged((user) => {
+        if (!user) {
+          window.location.href = "/authentication/sign-in";
+        }
+      });
+    };
+
+    checkAuthentication();
+  }, []);
   return (
     <DashboardLayout>
       <DashboardNavbar />
