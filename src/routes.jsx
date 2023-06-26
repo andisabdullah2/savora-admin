@@ -21,6 +21,7 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Resep from "layouts/resep";
+import AddResep from "layouts/resep/addresep";
 // import Billing from "layouts/billing";
 // import RTL from "layouts/rtl";
 // import Notifications from "layouts/notifications";
@@ -71,6 +72,12 @@ const routes = [
     icon: <Icon fontSize="small">article</Icon>,
     route: "/tips",
     component: <Tables />,
+  },
+  {
+    name: "Tambah Resep",
+    icon: <Icon fontSize="small">article</Icon>,
+    route: "/tambahResep",
+    component: <AddResep />,
   },
   // {
   //   type: "collapse",

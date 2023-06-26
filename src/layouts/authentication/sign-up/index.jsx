@@ -100,7 +100,7 @@ const Cover = () => {
               <MDBox mb={2}>
                 <MDInput type="password" fullWidth margin="dense" variant="outlined" size="small" value={password} id="password" onChange={onChange} name="password" label="Password" required />
               </MDBox>
-              <MDBox display="flex" alignItems="center" ml={-1}>
+              {/* <MDBox display="flex" alignItems="center" ml={-1}>
                 <Checkbox />
                 <MDTypography
                   variant="button"
@@ -120,7 +120,7 @@ const Cover = () => {
                 >
                   Terms and Conditions
                 </MDTypography>
-              </MDBox>
+              </MDBox> */}
               <MDBox mt={4} mb={1}>
                 <MDButton  type="submit" variant="gradient" color="info" fullWidth>
                   sign in
